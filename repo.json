@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "uchardet",
+    "Description": "Encoding detection",
+    "Website": "https://github.com/niten94/micro-uchardet",
+    "Tags": ["encoding", "charset", "detect", "uchardet"],
+    "Versions": [
+      {
+        "Version": "1.0.0",
+        "Url": "https://github.com/niten94/micro-uchardet/archive/v1.0.0.zip",
+        "Require": {
+          "micro": ">=2.0.0"
+        }
+      }
+    ]
+  }
+]
