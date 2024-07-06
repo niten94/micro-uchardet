@@ -15,6 +15,12 @@ instructions on your platform to install it.
 
 ## Options
 
+* `uchardet.command`: command separated with whitespace that is run when
+   detecting encoding, where last argument with percent sign (`%`) only is
+   replaced with path
+
+    default value: `uchardet -- %`
+
 * `uchardet.onopen`: detect encoding when files are opened and reopen file if
    encoding is detected
 

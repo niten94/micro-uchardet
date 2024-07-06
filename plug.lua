@@ -5,12 +5,32 @@ local config = import("micro/config")
 local buffer = import("micro/buffer")
 local shell = import("micro/shell")
 
+local function runcmd(buf)
+    local opt = "uchardet.command"
+    local str = buf.Settings[opt] or config.GetGlobalOption(opt)
+
+    local cmd = {}
+    local pathind
+    for item in str:gmatch("[^%s]+") do
+        table.insert(cmd, item)
+        if item == "%" then pathind = #cmd end
+    end
+
+    if #cmd < 2 then return nil, "less than 1 argument in command option" end
+    if not pathind then return nil, "path placeholder not in command option" end
+    return cmd, pathind
+end
+
 local function detect(buf)
     if buf.Type.Scratch or buf.Path == "" or buf:Modified() then
         return nil, "buffer not saved"
     end
 
-    local encd, err = shell.ExecCommand("uchardet", "--", buf.Path)
+    local cmd, pathind = runcmd(buf)
+    if not cmd then return nil, pathind end
+
+    cmd[pathind] = buf.Path
+    local encd, err = shell.ExecCommand(unpack(cmd))
     if err then
         encd = encd and encd:match("(.-)%s*$") or ""
         return nil, encd == "" and err:Error() or err:Error() .. ": " .. encd
@@ -85,6 +105,7 @@ end
 
 function init()
     config.MakeCommand("uchardet", cmdhndl, config.NoComplete)
+    config.RegisterCommonOption("uchardet", "command", "uchardet -- %")
     config.RegisterCommonOption("uchardet", "onopen", false)
     config.AddRuntimeFile("uchardet", config.RTHelp, "help/uchardet.md")
 end
