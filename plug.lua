@@ -6,12 +6,9 @@ local buffer = import("micro/buffer")
 local shell = import("micro/shell")
 
 local function runcmd(buf)
-    local opt = "uchardet.command"
-    local str = buf.Settings[opt] or config.GetGlobalOption(opt)
-
     local cmd = {}
     local pathind
-    for item in str:gmatch("[^%s]+") do
+    for item in buf.Settings["uchardet.command"]:gmatch("[^%s]+") do
         table.insert(cmd, item)
         if item == "%" then pathind = #cmd end
     end
@@ -103,9 +100,12 @@ function onBufferOpen(buf)
     if err then micro.InfoBar():Error("uchardet: " .. err) end
 end
 
-function init()
-    config.MakeCommand("uchardet", cmdhndl, config.NoComplete)
+function preinit()
     config.RegisterCommonOption("uchardet", "command", "uchardet -- %")
     config.RegisterCommonOption("uchardet", "onopen", false)
+end
+
+function init()
+    config.MakeCommand("uchardet", cmdhndl, config.NoComplete)
     config.AddRuntimeFile("uchardet", config.RTHelp, "help/uchardet.md")
 end
