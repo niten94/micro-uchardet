@@ -10,8 +10,8 @@ return and NUL character are detected before the first linefeed in the file.
 ## Installation
 
 The `uchardet` command line tool has to be installed so that the plugin can be
-used. The tool is not included in the plugin, so please lookup installation
-instructions on your platform to install it.
+used. The tool is not included in the plugin, so please install it using
+methods available on your platform.
 
 ## Options
 
