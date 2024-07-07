@@ -37,6 +37,4 @@ The byte order mark (BOM) in the beginning of some files may be editable.
 The characters the BOM is encoded as are not displayed but the cursor can be
 placed on the characters.
 
-## References
-
 [^1]: uchardet homepage: [link](https://www.freedesktop.org/wiki/Software/uchardet/)
