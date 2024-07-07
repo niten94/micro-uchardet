@@ -1,8 +1,8 @@
 # uchardet Plugin
 
 This plugin provides the `uchardet` command where the encoding of the file
-currently being viewed is detected and the file is reopened in the encoding that
-was detected.
+currently being viewed is detected using the command line tool of uchardet[^1]
+and the file is reopened in the encoding that was detected.
 
 The line endings of the file are set to CRLF (DOS line endings) when carriage
 return and NUL character are detected before the first linefeed in the file.
@@ -36,3 +36,7 @@ the description of `encoding` option in `options` help page for details.
 The byte order mark (BOM) in the beginning of some files may be editable.
 The characters the BOM is encoded as are not displayed but the cursor can be
 placed on the characters.
+
+## References
+
+[^1]: uchardet homepage: [link](https://www.freedesktop.org/wiki/Software/uchardet/)
