@@ -34,7 +34,7 @@ the description of `encoding` option in `options` help page for details.
 ## Notes
 
 The byte order mark (BOM) in the beginning of some files may be editable.
-The characters the BOM is encoded as are not displayed but the cursor can be
+The characters the BOM is decoded as are not displayed but the cursor can be
 placed on the characters.
 
 [^1]: uchardet homepage: [link](https://www.freedesktop.org/wiki/Software/uchardet/)
