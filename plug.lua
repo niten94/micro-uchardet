@@ -35,8 +35,8 @@ local function detect(buf)
 
     local revsep = encd:reverse():find(" :")
     encd = encd:match("(.-)%s*$", revsep and #encd - revsep + 2 or nil)
-    err = not encd and "cannot parse command output" or nil
-    return encd and encd:lower() or nil, err
+    if not encd then return nil, "cannot parse command output" end
+    return encd:lower(), nil
 end
 
 local function dosfmt(buf)
