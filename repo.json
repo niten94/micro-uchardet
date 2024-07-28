@@ -6,8 +6,8 @@
     "Tags": ["encoding", "charset", "detect", "uchardet"],
     "Versions": [
       {
-        "Version": "1.1.1",
-        "Url": "https://github.com/niten94/micro-uchardet/archive/v1.1.1.zip",
+        "Version": "1.1.2",
+        "Url": "https://github.com/niten94/micro-uchardet/archive/v1.1.2.zip",
         "Require": {
           "micro": ">=2.0.7"
         }
